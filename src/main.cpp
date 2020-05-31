@@ -10,7 +10,7 @@
 
 using namespace std::experimental;
 
-static std::optional<std::vector<std::byte>> ReadFile(const std::string &path)
+static optional<std::vector<std::byte>> ReadFile(const std::string &path)
 {   
     std::ifstream is{path, std::ios::binary | std::ios::ate};
     if( !is )
@@ -25,6 +25,19 @@ static std::optional<std::vector<std::byte>> ReadFile(const std::string &path)
     if( contents.empty() )
         return std::nullopt;
     return std::move(contents);
+}
+
+void GetCoordinates(float &x_start, float &y_start, float &x_end, float &y_end) 
+{
+    std::cout << "Starting point X coordinate: ";
+    std::cin >> x_start;
+    std::cout << "Starting point Y coordinate: ";
+    std::cin >> y_start;
+    std::cout << "Destination point X coordinate: ";
+    std::cin >> x_end;
+    std::cout << "Destination point Y coordinate: ";
+    std::cin >> y_end;
+    return;
 }
 
 int main(int argc, const char **argv)
@@ -55,12 +68,17 @@ int main(int argc, const char **argv)
     // TODO 1: Declare floats `start_x`, `start_y`, `end_x`, and `end_y` and get
     // user input for these values using std::cin. Pass the user input to the
     // RoutePlanner object below in place of 10, 10, 90, 90.
+    float start_x;
+    float start_y;
+    float end_x;
+    float end_y;
+    GetCoordinates(start_x, start_y, end_x, end_y);
 
     // Build Model.
     RouteModel model{osm_data};
 
     // Create RoutePlanner object and perform A* search.
-    RoutePlanner route_planner{model, 10, 10, 90, 90};
+    RoutePlanner route_planner{model, start_x, start_y, end_x, end_y};
     route_planner.AStarSearch();
 
     std::cout << "Distance: " << route_planner.GetDistance() << " meters. \n";
