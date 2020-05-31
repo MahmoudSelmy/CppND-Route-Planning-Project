@@ -10,6 +10,10 @@ RoutePlanner::RoutePlanner(RouteModel &model, float start_x, float start_y, floa
 
     // TODO 2: Use the m_Model.FindClosestNode method to find the closest nodes to the starting and ending coordinates.
     // Store the nodes you find in the RoutePlanner's start_node and end_node attributes.
+    RouteModel::Node& start = m_Model.FindClosestNode(start_x, start_y);
+    this->start_node = &start;
+    RouteModel::Node& end = m_Model.FindClosestNode(end_x, end_y);
+    this->end_node = &end;
 
 }
 
