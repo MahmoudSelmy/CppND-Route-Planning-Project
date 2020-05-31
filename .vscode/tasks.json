@@ -2,13 +2,23 @@
 	"version": "2.0.0",
     "tasks": [
         {
+            "label": "Create-Build-Directory",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "command": "mkdir",
+            "args": ["build || exit"]
+        },
+        {
             "label": "CMake",
             "type": "shell",
             "options": {
                 "cwd": "${workspaceRoot}/build"
             },
             "command": "cmake",
-            "args": ["-DCMAKE_BUILD_TYPE=Debug", ".."]
+            "args": ["-DCMAKE_BUILD_TYPE=Debug", ".."],
+            "dependsOn":["Create-Build-Directory"]
         },
         {
             "label": "Make",
