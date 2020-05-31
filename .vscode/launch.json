@@ -1,10 +1,30 @@
 {
     "configurations": [
     {
-        "name": "Launch",
+        "name": "Run",
         "type": "cppdbg",
         "request": "launch",
         "program": "${workspaceFolder}/build/OSM_A_star_search",
+        "args": [],
+        "stopAtEntry": false,
+        "cwd": "${workspaceFolder}/build",
+        "environment": [],
+        "externalConsole": false,
+        "setupCommands": [
+            {
+                "description": "Enable pretty-printing for gdb",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+            }
+        ],
+        "logging": { "trace": true, "traceResponse": true },
+        "preLaunchTask": "Make"
+    },
+    {
+        "name": "Test",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/build/test",
         "args": [],
         "stopAtEntry": false,
         "cwd": "${workspaceFolder}/build",

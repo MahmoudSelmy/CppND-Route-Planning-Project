@@ -7,8 +7,8 @@
             "options": {
                 "cwd": "${workspaceRoot}"
             },
-            "command": "mkdir",
-            "args": ["build || exit"]
+            "command": "touch",
+            "args": ["build", "||", "exit"]
         },
         {
             "label": "CMake",
